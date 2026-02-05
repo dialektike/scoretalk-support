@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoreTalk - 음성으로 성적 입력</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --section-bg: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.8;
+            background: var(--bg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .hero-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Content */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 48px 0;
+        }
+
+        section + section {
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 14px;
+        }
+
+        ul li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: var(--section-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-card .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-card p {
+            font-size: 0.82rem;
+            margin-bottom: 0;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: var(--section-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .contact-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.82rem;
+        }
+
+        /* Date */
+        .updated-date {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.82rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero { padding: 60px 20px 40px; }
+            .hero h1 { font-size: 1.8rem; }
+            .features { grid-template-columns: 1fr; }
+            nav a { margin: 0 12px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-icon">🎙️</div>
+        <h1>ScoreTalk</h1>
+        <p>음성으로 간편하게 성적을 입력하고 관리하는 교사용 앱</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">소개</a>
+        <a href="#privacy">개인정보 처리방침</a>
+        <a href="#support">지원</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- About -->
+        <section id="about">
+            <h2>앱 소개</h2>
+            <p>ScoreTalk은 교사를 위한 음성 기반 성적 입력 앱입니다. 학생 이름과 점수를 말하면 자동으로 기록되어, 수기 입력 없이 빠르고 정확하게 성적을 관리할 수 있습니다.</p>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">🗣️</div>
+                    <h4>음성 입력</h4>
+                    <p>학생 이름과 점수를 말하면 자동 기록</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">✅</div>
+                    <h4>음성 확인</h4>
+                    <p>입력 내용을 음성으로 확인하여 정확성 보장</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h4>성적 관리</h4>
+                    <p>학생별 점수를 한눈에 확인</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📁</div>
+                    <h4>CSV 내보내기</h4>
+                    <p>성적 데이터를 파일로 저장 및 공유</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Policy -->
+        <section id="privacy">
+            <h2>개인정보 처리방침</h2>
+            <span class="updated-date">최종 수정일: 2026년 2월 5일</span>
+
+            <p>ScoreTalk(이하 "앱")은 사용자의 개인정보를 소중히 여기며, 관련 법률에 따라 개인정보를 보호하고 있습니다.</p>
+
+            <h3>1. 수집하는 정보</h3>
+            <p>앱은 다음과 같은 정보를 사용자의 직접 입력을 통해 수집합니다.</p>
+            <ul>
+                <li>학생 이름 및 학번</li>
+                <li>학생 점수</li>
+                <li>음성 데이터 (점수 입력 시 일시적으로 처리)</li>
+            </ul>
+
+            <h3>2. 정보 사용 목적</h3>
+            <p>수집된 정보는 다음 목적으로만 사용됩니다.</p>
+            <ul>
+                <li>성적 기록 및 관리</li>
+                <li>음성 인식을 통한 데이터 입력</li>
+                <li>CSV 파일 내보내기</li>
+            </ul>
+
+            <h3>3. 데이터 저장</h3>
+            <p>모든 데이터는 사용자의 기기에만 저장됩니다. 앱은 외부 서버를 사용하지 않으며, 어떠한 데이터도 인터넷을 통해 전송하지 않습니다.</p>
+
+            <h3>4. 제3자 공유</h3>
+            <p>앱은 사용자의 데이터를 제3자와 공유하지 않습니다.</p>
+
+            <h3>5. 음성 데이터 처리</h3>
+            <p>앱은 Apple의 Speech Framework를 사용하여 음성을 텍스트로 변환합니다. 음성 데이터는 변환 후 즉시 폐기되며, 별도로 저장하거나 전송하지 않습니다. 음성 인식 처리는 Apple의 개인정보 처리방침에 따릅니다.</p>
+
+            <h3>6. 아동의 개인정보</h3>
+            <p>앱은 교사가 사용하도록 설계되었으며, 학생의 개인정보는 교사의 기기에만 저장됩니다. 앱은 학생으로부터 직접 개인정보를 수집하지 않습니다.</p>
+
+            <h3>7. 개인정보 삭제</h3>
+            <p>사용자는 앱 내에서 언제든지 저장된 데이터를 삭제할 수 있으며, 앱을 삭제하면 모든 데이터가 기기에서 완전히 제거됩니다.</p>
+
+            <h3>8. 변경 사항</h3>
+            <p>본 개인정보 처리방침은 변경될 수 있으며, 변경 시 앱 업데이트를 통해 안내합니다.</p>
+
+            <h3>9. 문의</h3>
+            <p>개인정보 처리방침에 관한 문의는 아래 연락처로 보내주시기 바랍니다.</p>
+        </section>
+
+        <!-- Support -->
+        <section id="support">
+            <h2>지원 및 문의</h2>
+            <p>ScoreTalk 사용 중 문제가 발생하거나 건의사항이 있으시면 아래로 연락해 주세요.</p>
+
+            <div class="contact-box">
+                <p style="margin-bottom: 8px; color: var(--text); font-weight: 600;">이메일</p>
+                <a href="mailto:example+scoretalk@gmail.com">example+scoretalk@gmail.com</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 ScoreTalk. All rights reserved.
+    </footer>
+
+</body>
+</html>
